@@ -1,0 +1,33 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8766
+spring:
+  application:
+    name: system
+  datasource:
+    name: db_system
+    url: jdbc:mysql://localhost:3306/db_system?Unicode=true&amp;characterEncoding=utf8&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  thymeleaf:
+    cache: true
+    prefix: classpath:/templates/views/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+#实体对象所在的包，跟数据库表一一对应#mapper文件的位置
+mybatis:
+  typeAliasesPackage: com.mydemo.system.entity
+  mapperLocations: classpath:mapper/*.xml
+#pagehelper分页插件配置
+pagehelper:
+  helperDialect: mysql
+logging:
+  path: /logs/system
