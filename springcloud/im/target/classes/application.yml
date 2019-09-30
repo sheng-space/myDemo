@@ -1,0 +1,14 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8764
+spring:
+  application:
+    name: im
+#日志的配置文件路径
+logging:
+  config:classpath: logback.xml
+  path: d:/log
+

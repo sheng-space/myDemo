@@ -24,13 +24,14 @@ export default {
         payload: res.data,
       });
     },
-    *get({ payload }, { call, put }) {
+    *get({ payload, callback }, { call, put }) {
       const res = yield call(post, payload);
       if(res.code !== '0') return;  
       yield put({
         type: '_setMenu',
         payload: res.data,
       });
+      if(callback)callback(res.data);
     }    
   },
   reducers: {

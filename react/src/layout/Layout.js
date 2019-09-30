@@ -87,7 +87,7 @@ class Index extends Component {
     this.setState({modalVisible: !this.state.modalVisible});
   };
   render() {
-    const { children, location, layout:{menuList,user},settings } = this.props;
+    const { children, location, layout:{menuList,user}} = this.props;
     const { collapsed,theme,mode,mobile,modalVisible} = this.state;
     return (
       <Layout>
@@ -124,13 +124,13 @@ class Index extends Component {
         <SettingDrawer
           mode={mode}
           theme={theme}
-          mobile={mobile} 
-          settings={settings} 
+          mobile={mobile}          
           modalVisible={modalVisible}                       
           onMode={this.handleMenuMode}
           onMobile={this.handleMobile}  
           onTheme={this.handleMenuTheme}
-          onModalVisible={this.handleMenuModalVisible}      
+          onModalVisible={this.handleMenuModalVisible}    
+          {...this.props}  
         />      
       </Layout>
     );

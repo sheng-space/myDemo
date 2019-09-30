@@ -1,7 +1,23 @@
 //全局覆盖样式
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 .ant-card-body {
   padding: 10px;
   zoom: 1;
+}
+.card-button-group {
+  cursor: pointer;
+  .button-option { 
+    margin-left: 10px;
+    transition: all 0.5s;  
+    &:hover {
+      transform: scale(1.1);    
+      box-shadow: 0 3px 7px rgba(0, 0, 0, .5);          
+    }
+  }
 }
 .button-group {
   cursor: pointer; 
@@ -17,4 +33,15 @@
     }
   }
 }
-
+.tree-icon{
+  height: 20px;
+  cursor: pointer; 
+  .action {     
+    font-size: 15px;   
+    transition: all 0.5s;  
+  }
+  .action:hover {
+    font-size: 18px;
+    transform: scale(1.2);     
+  }
+}

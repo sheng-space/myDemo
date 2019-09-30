@@ -1,9 +1,8 @@
 
-import React, { Component} from 'react';
+import { Component} from 'react';
 import { connect } from 'dva';
 import router from 'umi/router';
 import { Card, Table, Row, Col, Divider, Tree, Icon, Spin, Button, Tooltip } from 'antd';
-import style from "./style.less";
 const { TreeNode } = Tree;
 
 const columns = [
@@ -24,9 +23,9 @@ const columns = [
     key: 'code',
   },
   {
-    title: '菜单url',
-    dataIndex: 'phone',
-    key: 'phone',
+    title: '菜单URL',
+    dataIndex: 'path',
+    key: 'path',
   },
   {
     title: '菜单排序',
@@ -132,9 +131,9 @@ class List extends Component{
               title={"菜单列表"} 
               hoverable
               extra={
-                <div className={style.treeIcon}>
-                  <Tooltip title={"刷新"}  className={style.action}>
-                    <Icon className={style.action} type={treeLoading?"loading":"reload"} onClick={this.refreshTree} />
+                <div className={"tree-icon"}>
+                  <Tooltip title={"刷新"}  className={'action'}>
+                    <Icon type={treeLoading?"loading":"reload"} onClick={this.refreshTree} />
                   </Tooltip>                      
                 </div>
               }>

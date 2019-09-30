@@ -1,3 +1,5 @@
+
+import webpackPlugin from './plugin.config';
 export default {
   singular: true,
   plugins: [
@@ -7,8 +9,9 @@ export default {
       locale: {
         enable: true,
       },
-    }],
+    }]
   ],
+  //路由配置
   routes: [
     {path: '/login',component: '../login/Login'},
     {
@@ -45,6 +48,12 @@ export default {
       ]
     } 
   ],
+  //自定义主题
+  // theme: {
+  //   '@primary-color': '#1890FF',
+  // },
+  chainWebpack: webpackPlugin,
+  //拦截转发
   proxy: {    
     "/api/system": {
       target: "http://localhost:8762/",

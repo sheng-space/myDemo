@@ -20,7 +20,6 @@ const Body = ({ children, title, style }) => (
   </div>
 );
 
-@connect(({setting}) => ({setting}))
 class SettingDrawer extends PureComponent {
 
   getLayoutSetting = () => {
@@ -120,8 +119,8 @@ class SettingDrawer extends PureComponent {
   };
 
   render() {
-    const { setting, modalVisible,onModalVisible } = this.props;
-    const { navTheme, primaryColor, layout, colorWeak } = setting;
+    const { setting:{navTheme, primaryColor, layout, colorWeak}, modalVisible,onModalVisible } = this.props;
+    console.log(this.props);
     return (
       <Drawer
         visible={modalVisible}

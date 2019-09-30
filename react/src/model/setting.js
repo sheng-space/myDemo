@@ -1,33 +1,22 @@
-import { message } from 'antd';
-import defaultSettings from '../../config/defaultSettings';
-
 const STORAGE_SETTING_NAME = 'setting';
 let lessNodesAppended;
 const updateTheme = primaryColor => {
   if (!primaryColor) {
     return;
   }
-  const hideMessage = message.loading('正在编译主题！', 0);
   function buildIt() {
     if (!window.less) {
       return;
     }
-    setTimeout(() => {
-      window.less
-        .modifyVars({
-          '@primary-color': primaryColor,
-        })
-        .then(() => {
-          hideMessage();
-        })
-        .catch(() => {
-          message.error('编译失败');
-          hideMessage();
-        });
-    }, 200);
+    window.less.modifyVars({
+      '@primary-color': primaryColor,
+    }).then(() => {
+
+    }).catch(() => {
+
+    });
   }
   if (!lessNodesAppended) {
-    // insert less.js and color.less
     const lessStyleNode = document.createElement('link');
     const lessConfigNode = document.createElement('script');
     const lessScriptNode = document.createElement('script');
@@ -62,9 +51,22 @@ const updateColorWeak = colorWeak => {
 const getDefaultSettings = () => {
   const settings =  JSON.parse(localStorage.getItem(STORAGE_SETTING_NAME));
   if(!settings) {
-    const data = JSON.stringify(defaultSettings);
+    const data = JSON.stringify({
+      navTheme: 'dark',
+      primaryColor: '#1890FF',
+      layout: 'sidemenu',
+      contentWidth: 'Fluid',
+      fixedHeader: false,
+      autoHideHeader: false,
+      fixSiderbar: false,
+      colorWeak: false,
+      menu: {disableLocal: false},
+      title: 'myDemo',
+      pwa: true,
+      iconfontUrl: '',
+    });
     localStorage.setItem(STORAGE_SETTING_NAME, data);
-    return defaultSettings;
+    return data;
   }
   return settings;
 }
@@ -77,12 +79,9 @@ export default {
   reducers: {
     getSetting(state) {
       const setting = {};
-      const { primaryColor, colorWeak } = setting;
-      /* if (state.primaryColor !== primaryColor) {
-        updateTheme(primaryColor);
-      } */
+      const { primaryColor, colorWeak } = setting;   
       updateColorWeak(colorWeak);
-      if(state.primaryColor !== defaultSettings.primaryColor) {
+      if(state.primaryColor !== primaryColor) {
         updateTheme(state.primaryColor);
       }
       return {

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Menu, Icon, Spin, Tag, Dropdown, Avatar, Divider, Tooltip, Button } from 'antd';
-import moment from 'moment';
+
 import groupBy from 'lodash/groupBy';
 import Debounce from 'lodash-decorators/debounce';
 import Link from 'umi/link';
@@ -21,7 +21,7 @@ export default class GlobalHeader extends PureComponent {
     const newNotices = notices.map(notice => {
       const newNotice = { ...notice };
       if (newNotice.datetime) {
-        newNotice.datetime = moment(notice.datetime).fromNow();
+        newNotice.datetime = "";
       }
       // transform id to item key
       if (newNotice.id) {
